@@ -1,0 +1,53 @@
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/spring_logs/current.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <maxFileSize>20MB</maxFileSize>
+            <!-- TODO: Roll logs based on application start up-->
+            <fileNamePattern>${LOG_DIR}/spring_logs/%d{YYYY/MM,aux}/%d.%i.log</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="REQUEST_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/request_logs/current.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <maxFileSize>20MB</maxFileSize>
+            <!-- TODO: Roll logs based on application start up-->
+            <fileNamePattern>${LOG_DIR}/request_logs/%d{YYYY/MM,aux}/%d.%i.log</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="org.springframework.web" level="DEBUG" />
+    <logger name="org.zalando.logbook" level="TRACE"/>
+
+    <springProfile name="dev">
+        <logger name="org.hibernate.SQL" level="DEBUG"/>
+        <logger name="org.hibernate.type" level="TRACE"/>
+    </springProfile>
+
+
+    <springProfile name="prod">
+
+        <root level="INFO">
+            <appender-ref ref="FILE" />
+        </root>
+
+        <logger name="org.zalando.logbook" level="TRACE">
+            <appender-ref ref="REQUEST_FILE"/>
+        </logger>
+
+        <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="INFO"/>
+    </springProfile>
+</configuration>

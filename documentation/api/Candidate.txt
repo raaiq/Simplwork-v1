@@ -1,0 +1,108 @@
+Endpoint path: "/api/candidate"
+
+
+Domain Objects:
+   {"candidateProfile" : {
+          "location": {
+              "latitude": 46.631075,
+              "longitude": -73.877369,
+              "address": "6 Dixon Rd,Toronto, ON"
+          },
+          "workHistory" : [{
+           "companyName" : "Pizza Hut",
+           "positionTitle" : "Team Member",
+           "details" : "Made pizzas at busiest times of business with few errors, cleaned dishes, prepped toppings,stocked inventory",
+           "startDate" :"01-09-2017"   ,
+           "endDate" : "31-12-2017"
+          }],
+          "availability": {
+              "times": [
+                  [
+                      {
+                          "startTime": "0",
+                          "endTime": "900"
+                      }
+                  ],
+                  [
+                      {
+                          "startTime": "0",
+                          "endTime": "800"
+                      }
+                  ],
+                  [
+                      {
+                          "startTime": "0",
+                          "endTime": "1200"
+                      }
+                  ],
+                  [
+                      {
+                          "startTime": "0",
+                          "endTime": "1300"
+                      }
+                  ],
+                  [
+                      {
+                          "startTime": "0",
+                          "endTime": "1400"
+                      }
+                  ],
+                  [
+                      {
+                          "startTime": "0",
+                          "endTime": "150"
+                      }
+                  ],
+                  [
+                      {
+                          "startTime": "0",
+                          "endTime": "160"
+                      }
+                  ]
+              ]
+          },
+
+          "autoMatch": true
+      },
+       "user" :{
+           "name": "Raaiq",
+           "phoneNumber": "647-914-6888",
+           "gender": "MALE",
+           "age" : 16
+       }
+      }
+
+
+Relative Path: ""
+Method: POST
+Content-type: application/json
+Response Status: 201 Created
+Request body: Domain object Candidate
+
+
+Relative Path: ""
+Method GET
+Content-type: application/json
+Response status: 200 OK
+Response body: Domain object Candidate
+
+
+Relative Path: ""
+Method PATCH
+Content-type: application/json-patch+json
+Response status: 204 No Content
+Domain object: Candidate
+Sample Request body:
+[
+    {
+        "op" : "replace",
+        "path": "/candidateProfile/workHistory/0/startDate",
+        "value" : "10-02-2017"
+    },
+    {
+        "op" : "replace",
+        "path" : "/user/name",
+        "value" : "Rana Raaiq Rauf"
+    }
+
+]

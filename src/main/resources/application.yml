@@ -1,0 +1,40 @@
+spring:
+  servlet:
+    multipart:
+      max-request-size: 20MB
+      max-file-size: 20MB
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+
+  liquibase:
+    enabled: false
+
+  jndi.ignore: true
+
+  mail:
+    host: smtp.fastmail.com
+    port: 587
+    # TODO: Change email address
+    username: info@simplwork.com
+    from: Simplwork <info@simplwork.com>
+    password: ${MAIL_PASSWORD}
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+
+
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: false
+
+custom.employer.images.dir: ${EMPLOYER_IMAGE_DIR}
+custom.host.url: http://localhost:3000
+custom:
+  security:
+    allowed-origins: https://simplwork.com

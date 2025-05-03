@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1693789032538-3" author="ranar (generated)">
+        <addColumn tableName="employer_user_branch_roles">
+            <column name="employer_user_user_info_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1693789032538-4" author="ranar (generated)">
+        <addNotNullConstraint columnName="employer_user_user_info_id" tableName="employer_user_branch_roles"/>
+    </changeSet>
+    <changeSet id="1693789032538-5" author="ranar (generated)">
+        <addColumn tableName="employer_user_roles">
+            <column name="employer_user_user_info_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1693789032538-6" author="ranar (generated)">
+        <addNotNullConstraint columnName="employer_user_user_info_id" tableName="employer_user_roles"/>
+    </changeSet>
+    <changeSet id="1693789032538-7" author="ranar (generated)">
+        <addColumn tableName="employer_user">
+            <column name="user_info_id" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1693789032538-9" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_info_id" baseTableName="employer_user"
+                                 constraintName="FK_EMPLOYERUSER_ON_USERINFO" referencedColumnNames="id"
+                                 referencedTableName="user_info"/>
+    </changeSet>
+<!--    <changeSet id="1693789032538-10" author="ranar (generated)">-->
+<!--        <addForeignKeyConstraint baseColumnNames="employer_user_employer_id,employer_user_user_info_id"-->
+<!--                                 baseTableName="employer_user_roles"-->
+<!--                                 constraintName="fk_employeruser_roles_on_employer_user"-->
+<!--                                 referencedColumnNames="employer_id,user_info_id" referencedTableName="employer_user"/>-->
+<!--    </changeSet>-->
+    <changeSet id="1693789032538-11" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="employer_user_employer_id,employer_user_user_info_id"
+                                 baseTableName="employer_user_branch_roles"
+                                 constraintName="fk_empusebrarol_on_employer_user"
+                                 referencedColumnNames="employer_id,user_info_id" referencedTableName="employer_user"/>
+    </changeSet>
+    <changeSet id="1693789032538-12" author="ranar (generated)">
+        <dropForeignKeyConstraint baseTableName="employer_user_branch_roles"
+                                  constraintName="fk_employeruser_branchroles_on_employer_user"/>
+    </changeSet>
+    <changeSet id="1693789032538-13" author="ranar (generated)">
+        <dropForeignKeyConstraint baseTableName="employer_user" constraintName="fk_employeruser_on_userid"/>
+    </changeSet>
+    <changeSet id="1693789032538-14" author="ranar (generated)">
+        <dropForeignKeyConstraint baseTableName="employer_user_roles"
+                                  constraintName="fk_employeruser_roles_on_employer_user"/>
+    </changeSet>
+    <changeSet id="1693789032538-15" author="ranar (generated)">
+        <dropColumn columnName="user_id" tableName="employer_user"/>
+    </changeSet>
+    <changeSet id="1693789032538-16" author="ranar (generated)">
+        <dropColumn columnName="employer_user_user_id" tableName="employer_user_branch_roles"/>
+    </changeSet>
+    <changeSet id="1693789032538-17" author="ranar (generated)">
+        <dropColumn columnName="employer_user_user_id" tableName="employer_user_roles"/>
+    </changeSet>
+    <changeSet id="1693789032538-2" author="ranar (generated)">
+        <addPrimaryKey columnNames="employer_id, user_info_id" constraintName="pk_employeruser"
+                       tableName="employer_user"/>
+    </changeSet>
+
+</databaseChangeLog>

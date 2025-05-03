@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1693761472906-2" author="ranar (generated)">
+        <modifyDataType tableName="match_shift_compatibility_list" columnName="arrival_transit_info"
+                        newDataType="TEXT"/>
+    </changeSet>
+    <changeSet id="1693761472906-4" author="ranar (generated)">
+        <modifyDataType tableName="job_posting" columnName="benefits" newDataType="TEXT"/>
+    </changeSet>
+    <changeSet id="1693761472906-6" author="ranar (generated)">
+        <modifyDataType tableName="employer" columnName="company_description" newDataType="TEXT"/>
+    </changeSet>
+    <changeSet id="1693761472906-8" author="ranar (generated)">
+        <modifyDataType tableName="match_shift_compatibility_list" columnName="departure_transit_info"
+                        newDataType="TEXT"/>
+    </changeSet>
+    <changeSet id="1693761472906-10" author="ranar (generated)">
+        <modifyDataType tableName="candidate_profile_work_history" columnName="details" newDataType="TEXT"/>
+    </changeSet>
+    <changeSet id="1693761472906-12" author="ranar (generated)">
+        <modifyDataType tableName="job_posting" columnName="job_description" newDataType="TEXT"/>
+    </changeSet>
+    <changeSet id="1693761472906-14" author="ranar (generated)">
+        <modifyDataType tableName="job_posting" columnName="preferred_job_experience" newDataType="TEXT"/>
+    </changeSet>
+    <changeSet id="1693761472906-15" author="ranar (generated)">
+        <modifyDataType columnName="token" newDataType="VARCHAR(1024)" tableName="action_token"/>
+    </changeSet>
+    <changeSet id="1693761472906-16" author="ranar (generated)">
+        <modifyDataType columnName="data" newDataType="TEXT" tableName="action_token"/>
+    </changeSet>
+    <changeSet id="1693761472906-17" author="ranar (generated)">
+        <modifyDataType columnName="method_arg_types" newDataType="TEXT" tableName="action_token"/>
+    </changeSet>
+    <changeSet id="1693761472906-18" author="ranar (generated)">
+        <modifyDataType columnName="availability" newDataType="TEXT" tableName="candidate_profile"/>
+    </changeSet>
+    <changeSet id="1693761472906-19" author="ranar (generated)">
+        <modifyDataType columnName="roles" newDataType="TEXT" tableName="employer_branch_roles"/>
+    </changeSet>
+    <changeSet id="1693761472906-20" author="ranar (generated)">
+        <modifyDataType columnName="address_components" newDataType="VARCHAR(512)" tableName="branch"/>
+    </changeSet>
+    <changeSet id="1693761472906-21" author="ranar (generated)">
+        <modifyDataType columnName="address_components" newDataType="VARCHAR(512)" tableName="candidate_profile"/>
+    </changeSet>
+
+</databaseChangeLog>

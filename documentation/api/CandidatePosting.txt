@@ -1,0 +1,118 @@
+Path: "/api/candidate/postings"
+
+
+
+
+Relative Path: "/search"
+Method: GET
+Content-type: application/json
+Query Parameters:   queryString (Can be job title or company name) (Optional parameter),
+                    sortBy {match.potentialEarnings, match.distance, match.matchingHours,pay, match.shiftScore} (Defaults to match.potentialEarnings),
+                    direction {ASC,DESC} (Defaults to DESC),
+                    pageSize (Defaults to 20),
+                    pageNo (Defaults to 0)
+Response body:
+[
+    {
+        "posting": {
+            "shifts": [
+                {
+                "dayOfWeek": 1,
+                "shiftTimes": {
+                "startTime": 1,
+                "endTime": 555
+                },
+                "id": "1a598856-c6c0-4035-a342-96b258a5a913"
+                },
+                {
+                "dayOfWeek": 2,
+                "shiftTimes": {
+                "startTime": 1,
+                "endTime": 555
+                },
+                "id": "bbc0fe3b-8204-40fc-a7cd-f1cfdb56a2e0"
+                },
+                {
+                "dayOfWeek": 3,
+                "shiftTimes": {
+                "startTime": 1,
+                "endTime": 555
+                },
+                "id": "8f6a20ae-cbf2-40e6-bb97-5468d11e0e37"
+                }
+            ],
+            "pay": 34.0,
+            "positionTitle": "TeamMember",
+            "jobDescription": "Do job",
+            "benefits": "benefits",
+            "createdAt": "2023-04-23T16:58:46.495+00:00",
+            "employer": {
+                "companyName": "company",
+                "companyDescription": "Some decstipti%e3",
+                "branches": [
+                    {
+                        "branchName": "branch",
+                        "location": {
+                        "latitude": 43.65165102884241,
+                        "longitude": -79.90644101611244
+                    },
+                    "noOfJobs": 0
+                    }
+                ]
+            },
+            "id": 1,
+            "fixedSchedule": true
+        },
+        "employerStatus": "NEW",
+        "candidateStatus": "APPLY",
+        "shiftCompatibilities": [
+            {
+            "shiftID": "eafe60ed-0306-4d0a-9c7f-862b09808bf7",
+            "minBeforeShift": 0,
+            "minTillEnd": 0
+            },
+            {
+            "shiftID": "22e99f62-af3b-4aa4-a2dd-228bac45260f",
+            "minBeforeShift": 0,
+            "minTillEnd": 0
+            },
+            {
+            "shiftID": "058dd66f-fee9-400f-845e-00d52f113e2b",
+            "minBeforeShift": 0,
+            "minTillEnd": 0
+            }
+        ],
+        "walkCommuteTime": 43,
+        "bikeCommuteTime": -1,
+        "carCommuteTime": -1,
+        "distance": 3.275491215002779,
+        "matchingHours": 28,
+        "shiftScore": 100,
+        "potentialEarning": 952,
+        "candScore": 952
+    }
+]
+
+
+
+
+Relative Path: "/personal"
+Method: GET
+Content-type: application/json
+Query Parameters:   requestStatusSet {APPLIED,WITHDRAWN,ACCEPT_INTERVIEW} (Can be comma separated list values) (Defaults to list of all possible values)
+                    jobID (Unique identifier of job) (Either this or requestStatusSet can be set once per request),
+                    pageSize (Defaults to 20),
+                    pageNo (Defaults to 0)
+
+Response body: Same as /search endpoint
+
+
+Relative Path: "/setStatus"
+Method: POST
+Content-type: application/json
+Query Parameters:   postingID (ID of job posting to set status for)
+                    status {APPLIED,WITHDRAWN,ACCEPT_INTERVIEW} (Status to set for job posting)
+Response status: 204 No Content
+                    
+                    
+                    

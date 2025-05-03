@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1693756449307-4" author="ranar (generated)">
+        <modifyDataType tableName="job_posting" columnName="benefits" newDataType="oid"/>
+    </changeSet>
+    <changeSet id="1693756449307-6" author="ranar (generated)">
+        <modifyDataType tableName="employer" columnName="company_description" newDataType="oid"/>
+    </changeSet>
+    <changeSet id="1693756449307-8" author="ranar (generated)">
+        <modifyDataType tableName="candidate_profile_work_history" columnName="details" newDataType="oid"/>
+    </changeSet>
+    <changeSet id="1693756449307-10" author="ranar (generated)">
+        <modifyDataType tableName="job_posting" columnName="job_description" newDataType="oid"/>
+    </changeSet>
+    <changeSet id="1693756449307-14" author="ranar (generated)">
+        <modifyDataType tableName="job_posting" columnName="preferred_job_experience" newDataType="oid"/>
+    </changeSet>
+
+</databaseChangeLog>

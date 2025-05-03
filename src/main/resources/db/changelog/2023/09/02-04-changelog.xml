@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1693676210486-2" author="ranar (generated)">
+        <modifyDataType tableName="match_shift_compatibility_list" columnName="arrival_transit_info" newDataType="oid"/>
+    </changeSet>
+    <changeSet id="1693676210486-6" author="ranar (generated)">
+        <modifyDataType tableName="match_shift_compatibility_list" columnName="departure_transit_info"
+                        newDataType="oid"/>
+    </changeSet>
+
+</databaseChangeLog>

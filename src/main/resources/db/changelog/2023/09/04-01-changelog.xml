@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1693853812456-1" author="ranar (generated)">
+        <createSequence incrementBy="50" sequenceName="branch_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1693853812456-2" author="ranar (generated)">
+        <createSequence incrementBy="50" sequenceName="candidate_profile_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1693853812456-3" author="ranar (generated)">
+        <createSequence incrementBy="50" sequenceName="employer_branch_roles_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1693853812456-4" author="ranar (generated)">
+        <createSequence incrementBy="50" sequenceName="employer_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1693853812456-5" author="ranar (generated)">
+        <createSequence incrementBy="50" sequenceName="job_posting_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1693853812456-6" author="ranar (generated)">
+        <createTable tableName="action_token">
+            <column name="token" type="VARCHAR(1024)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_actiontoken"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="method_name" type="VARCHAR(255)"/>
+            <column name="method_arg_types" type="TEXT"/>
+            <column name="data" type="TEXT"/>
+            <column name="delete_after_use" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_type" type="VARCHAR(255)"/>
+            <column name="created_at" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-7" author="ranar (generated)">
+        <createTable tableName="branch">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_branch"/>
+            </column>
+            <column name="branch_name" type="VARCHAR(255)"/>
+            <column name="company_id" type="BIGINT"/>
+            <column name="latitude" type="DOUBLE"/>
+            <column name="longitude" type="DOUBLE"/>
+            <column name="full_address" type="VARCHAR(255)"/>
+            <column name="address_components" type="VARCHAR(512)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-8" author="ranar (generated)">
+        <createTable tableName="candidate_profile">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_candidateprofile"/>
+            </column>
+            <column name="profile_name" type="VARCHAR(255)"/>
+            <column name="comfortable_distance" type="INT"/>
+            <column name="minimum_pay" type="DOUBLE"/>
+            <column name="maximum_hours" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="availability" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_lift_weight" type="INT"/>
+            <column name="auto_match" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="latitude" type="DOUBLE"/>
+            <column name="longitude" type="DOUBLE"/>
+            <column name="full_address" type="VARCHAR(255)"/>
+            <column name="address_components" type="VARCHAR(512)"/>
+            <column name="latitude_low" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="latitude_high" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longitude_low" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="longitude_high" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-9" author="ranar (generated)">
+        <createTable tableName="candidate_profile_max_travel_times">
+            <column name="candidate_profile_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_candidateprofile_maxtraveltimes"/>
+            </column>
+            <column name="max_travel_times" type="INT"/>
+            <column name="max_travel_times_key" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_candidateprofile_maxtraveltimes"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-10" author="ranar (generated)">
+        <createTable tableName="candidate_profile_work_history">
+            <column name="candidate_profile_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="position_title" type="VARCHAR(255)"/>
+            <column name="company_name" type="VARCHAR(255)"/>
+            <column name="details" type="TEXT"/>
+            <column name="start_date" type="DATE"/>
+            <column name="end_date" type="DATE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-11" author="ranar (generated)">
+        <createTable tableName="employer">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_employer"/>
+            </column>
+            <column name="company_name" type="VARCHAR(255)"/>
+            <column name="company_description" type="TEXT"/>
+            <column name="company_image_image_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-12" author="ranar (generated)">
+        <createTable tableName="employer_branch_roles">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_employerbranchroles"/>
+            </column>
+            <column name="branch_id" type="BIGINT"/>
+            <column name="roles" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-13" author="ranar (generated)">
+        <createTable tableName="employer_image_file">
+            <column name="image_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_employer_image_file"/>
+            </column>
+            <column name="file_name" type="VARCHAR(255)"/>
+            <column name="ispng" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-14" author="ranar (generated)">
+        <createTable tableName="employer_user">
+            <column name="employer_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_employeruser"/>
+            </column>
+            <column name="user_info_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_employeruser"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-15" author="ranar (generated)">
+        <createTable tableName="employer_user_branch_roles">
+            <column name="employer_user_employer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employer_user_user_info_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch_roles_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-16" author="ranar (generated)">
+        <createTable tableName="employer_user_roles">
+            <column name="employer_user_employer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employer_user_user_info_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roles" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-17" author="ranar (generated)">
+        <createTable tableName="job_posting">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_jobposting"/>
+            </column>
+            <column name="branch_id" type="BIGINT"/>
+            <column name="fixed_schedule" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estimated_hours" type="INT"/>
+            <column name="pay" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="industry_type" type="INT"/>
+            <column name="position_title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_description" type="TEXT"/>
+            <column name="preferred_job_experience" type="TEXT"/>
+            <column name="benefits" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-18" author="ranar (generated)">
+        <createTable tableName="match">
+            <column name="walk_commute_time" type="INT"/>
+            <column name="bike_commute_time" type="INT"/>
+            <column name="car_commute_time" type="INT"/>
+            <column name="distance_to_work" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="manual_match" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shift_score" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employer_status" type="INT"/>
+            <column name="candidate_status" type="INT"/>
+            <column name="matching_hours" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="potential_earnings" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cand_score" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emp_score" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="candidate_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_match"/>
+            </column>
+            <column name="posting_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_match"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-19" author="ranar (generated)">
+        <createTable tableName="match_shift_compatibility_list">
+            <column name="match_candidate_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="match_posting_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shift_id" type="UUID"/>
+            <column name="min_after_shift" type="INT"/>
+            <column name="min_till_end" type="INT"/>
+            <column name="arrival_transit_info" type="TEXT"/>
+            <column name="departure_transit_info" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-20" author="ranar (generated)">
+        <createTable tableName="shift">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_shift"/>
+            </column>
+            <column name="day_of_week" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch_id" type="BIGINT"/>
+            <column name="start_time" type="SMALLINT"/>
+            <column name="end_time" type="SMALLINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-21" author="ranar (generated)">
+        <createTable tableName="shifts_for_job_posting">
+            <column name="job_posting_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shift_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-22" author="ranar (generated)">
+        <createTable tableName="user_candidate_profiles_mapping">
+            <column name="candidate_profile_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_candidate_profiles_mapping"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_candidate_profiles_mapping"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-23" author="ranar (generated)">
+        <createTable tableName="user_info">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_userinfo"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="age" type="SMALLINT"/>
+            <column name="gender" type="INT"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="oauth_id" type="VARCHAR(255)"/>
+            <column name="start_date" type="DATETIME"/>
+            <column name="requests" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1693853812456-24" author="ranar (generated)">
+        <addUniqueConstraint columnNames="branch_roles_id" constraintName="uc_employer_user_branch_roles_branchroles"
+                             tableName="employer_user_branch_roles"/>
+    </changeSet>
+    <changeSet id="1693853812456-25" author="ranar (generated)">
+        <addUniqueConstraint columnNames="candidate_profile_id"
+                             constraintName="uc_user_candidate_profiles_mapping_candidate_profile"
+                             tableName="user_candidate_profiles_mapping"/>
+    </changeSet>
+    <changeSet id="1693853812456-26" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="action_token"
+                                 constraintName="FK_ACTIONTOKEN_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user_info"/>
+    </changeSet>
+    <changeSet id="1693853812456-27" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="company_id" baseTableName="branch"
+                                 constraintName="FK_BRANCH_ON_COMPANY" referencedColumnNames="id"
+                                 referencedTableName="employer"/>
+    </changeSet>
+    <changeSet id="1693853812456-28" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="branch_id" baseTableName="employer_branch_roles"
+                                 constraintName="FK_EMPLOYERBRANCHROLES_ON_BRANCH" referencedColumnNames="id"
+                                 referencedTableName="branch"/>
+    </changeSet>
+    <changeSet id="1693853812456-29" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="employer_id" baseTableName="employer_user"
+                                 constraintName="FK_EMPLOYERUSER_ON_EMPLOYER" referencedColumnNames="id"
+                                 referencedTableName="employer"/>
+    </changeSet>
+    <changeSet id="1693853812456-30" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_info_id" baseTableName="employer_user"
+                                 constraintName="FK_EMPLOYERUSER_ON_USERINFO" referencedColumnNames="id"
+                                 referencedTableName="user_info"/>
+    </changeSet>
+    <changeSet id="1693853812456-31" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="company_image_image_id" baseTableName="employer"
+                                 constraintName="FK_EMPLOYER_ON_COMPANYIMAGE_IMAGE" referencedColumnNames="image_id"
+                                 referencedTableName="employer_image_file"/>
+    </changeSet>
+    <changeSet id="1693853812456-32" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="branch_id" baseTableName="job_posting"
+                                 constraintName="FK_JOBPOSTING_ON_BRANCH" referencedColumnNames="id"
+                                 referencedTableName="branch"/>
+    </changeSet>
+    <changeSet id="1693853812456-33" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="candidate_id" baseTableName="match"
+                                 constraintName="FK_MATCH_ON_CANDIDATEID" referencedColumnNames="id"
+                                 referencedTableName="candidate_profile"/>
+    </changeSet>
+    <changeSet id="1693853812456-34" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="posting_id" baseTableName="match"
+                                 constraintName="FK_MATCH_ON_POSTINGID" referencedColumnNames="id"
+                                 referencedTableName="job_posting"/>
+    </changeSet>
+    <changeSet id="1693853812456-35" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="branch_id" baseTableName="shift" constraintName="FK_SHIFT_ON_BRANCH"
+                                 referencedColumnNames="id" referencedTableName="branch"/>
+    </changeSet>
+    <changeSet id="1693853812456-36" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="candidate_profile_id"
+                                 baseTableName="candidate_profile_max_travel_times"
+                                 constraintName="fk_candidateprofile_maxtraveltimes_on_candidate_profile"
+                                 referencedColumnNames="id" referencedTableName="candidate_profile"/>
+    </changeSet>
+    <changeSet id="1693853812456-37" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="candidate_profile_id" baseTableName="candidate_profile_work_history"
+                                 constraintName="fk_candidateprofile_workhistory_on_candidate_profile"
+                                 referencedColumnNames="id" referencedTableName="candidate_profile"/>
+    </changeSet>
+    <changeSet id="1693853812456-38" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="employer_user_employer_id,employer_user_user_info_id"
+                                 baseTableName="employer_user_roles"
+                                 constraintName="fk_employeruser_roles_on_employer_user"
+                                 referencedColumnNames="employer_id,user_info_id" referencedTableName="employer_user"/>
+    </changeSet>
+    <changeSet id="1693853812456-39" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="branch_roles_id" baseTableName="employer_user_branch_roles"
+                                 constraintName="fk_empusebrarol_on_employer_branch_roles" referencedColumnNames="id"
+                                 referencedTableName="employer_branch_roles"/>
+    </changeSet>
+    <changeSet id="1693853812456-40" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="employer_user_employer_id,employer_user_user_info_id"
+                                 baseTableName="employer_user_branch_roles"
+                                 constraintName="fk_empusebrarol_on_employer_user"
+                                 referencedColumnNames="employer_id,user_info_id" referencedTableName="employer_user"/>
+    </changeSet>
+    <changeSet id="1693853812456-41" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="match_candidate_id,match_posting_id"
+                                 baseTableName="match_shift_compatibility_list"
+                                 constraintName="fk_match_shiftcompatibilitylist_on_match"
+                                 referencedColumnNames="candidate_id,posting_id" referencedTableName="match"/>
+    </changeSet>
+    <changeSet id="1693853812456-42" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="job_posting_id" baseTableName="shifts_for_job_posting"
+                                 constraintName="fk_shiforjobpos_on_job_posting" referencedColumnNames="id"
+                                 referencedTableName="job_posting"/>
+    </changeSet>
+    <changeSet id="1693853812456-43" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="shift_id" baseTableName="shifts_for_job_posting"
+                                 constraintName="fk_shiforjobpos_on_shift" referencedColumnNames="id"
+                                 referencedTableName="shift"/>
+    </changeSet>
+    <changeSet id="1693853812456-44" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="candidate_profile_id" baseTableName="user_candidate_profiles_mapping"
+                                 constraintName="fk_usecanpromap_on_candidate_profile" referencedColumnNames="id"
+                                 referencedTableName="candidate_profile"/>
+    </changeSet>
+    <changeSet id="1693853812456-45" author="ranar (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_candidate_profiles_mapping"
+                                 constraintName="fk_usecanpromap_on_user_info" referencedColumnNames="id"
+                                 referencedTableName="user_info"/>
+    </changeSet>
+
+</databaseChangeLog>
